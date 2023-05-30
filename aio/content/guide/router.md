@@ -349,7 +349,7 @@ The following route guards are available in Angular:
 
 To use route guards, consider using [component-less routes](api/router/Route#componentless-routes) as this facilitates guarding child routes.
 
-Create a service for your guard:
+Create a file for your guard:
 
 <code-example format="shell" language="shell">
 
@@ -357,12 +357,12 @@ ng generate guard your-guard
 
 </code-example>
 
-In your guard function, implement the guard you want to use.
-The following example uses `canActivate` to guard the route.
+In your guard file, add the guard functions you want to use.
+The following example uses `canActivateFn` to guard the route.
 
 <code-example header="guard (excerpt)">
 
-export const yourGuard: CanActivateFn = (
+export const yourGuardFunction: CanActivateFn = (
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot) => {
       // your  logic goes here
@@ -378,7 +378,7 @@ Here, `canActivate` tells the router to mediate navigation to this particular ro
 {
   path: '/your-path',
   component: YourComponent,
-  canActivate: [yourGuard],
+  canActivate: [yourGuardFunction],
 }
 
 </code-example>
